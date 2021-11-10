@@ -1,0 +1,17 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: torchserve
+  labels:
+    app: torchserve
+spec:
+  ports:
+  - name: preds
+    port: 8080
+    targetPort: ts
+  - name: mdl
+    port: 8081
+    targetPort: ts-management
+  type: LoadBalancer
+  selector:
+    app: torchserve
